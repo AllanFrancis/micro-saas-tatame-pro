@@ -11,4 +11,10 @@ export class UserController {
   async getUserProfile(@Param('id') id: number) {
     return await this.userService.findById(id);
   }
+
+  @UseGuards(JwtGuard)
+  @Get()
+  async getUser(@Param('id') id: number) {
+    return await this.userService.findAll();
+  }
 }

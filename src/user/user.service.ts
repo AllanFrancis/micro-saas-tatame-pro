@@ -26,7 +26,6 @@ export class UserService {
     const { password, ...result } = newUser;
     return result;
   }
-
   async findByEmail(email: string) {
     return await this.prisma.user.findUnique({
       where: {
@@ -40,5 +39,8 @@ export class UserService {
         id: id,
       },
     });
+  }
+  async findAll() {
+    return await this.prisma.user.findMany();
   }
 }
